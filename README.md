@@ -1,5 +1,7 @@
 # logistics-pm
 
+> **Disclaimer:** Two sample PRDs based on common freight forwarding patterns, fully anonymized. All company, vendor, and product names in this repo have been replaced with generic placeholders (e.g., "rate intelligence platform", "accounting system"). Reference documents are illustrative examples for demonstrating domain-tuned PRD generation and style matching.
+
 A domain-specific product management plugin for freight forwarding and logistics teams. Built to extend generic PM copilots with vertical expertise they lack: operational knowledge of forwarding workflows (quoting, booking, customs clearance, tracking, invoicing, credit management), logistics-tuned PRD generation, a quality evaluation framework, and personalized style matching.
 
 ## The Problem
@@ -16,7 +18,7 @@ Generic PM copilots produce reasonable output for standard SaaS features. They f
 
 | Skill | What it adds |
 |-------|-------------|
-| `freight-domain-knowledge` | Full operational knowledge of the freight forwarding lifecycle: macro logistics (procurement through last-mile), forwarding execution (quotation, consolidation, customs, main carriage, final delivery), documentation workflows (BOL hierarchy, commercial invoices, ISF), financial reconciliation (credit exposure, QuickBooks sync, milestone-based invoicing), and the digital transformation reshaping the industry. Not a glossary -- working knowledge that informs every section of a spec. |
+| `freight-domain-knowledge` | Full operational knowledge of the freight forwarding lifecycle: macro logistics (procurement through last-mile), forwarding execution (quotation, consolidation, customs, main carriage, final delivery), documentation workflows (BOL hierarchy, commercial invoices, ISF), financial reconciliation (credit exposure, accounting system sync, milestone-based invoicing), and the digital transformation reshaping the industry. Not a glossary -- working knowledge that informs every section of a spec. |
 | `logistics-prd-generation` | PRD generation tuned for logistics features. Adds sections generic plugins miss: integration architecture with data flow direction, sync frequency and failure handling, compliance requirements, financial exposure, demurrage/detention economics. Template derived from real freight forwarding PRDs. |
 | `eval-framework` | 5-dimension quality rubric (completeness, domain accuracy, actionability, style consistency, metric specificity). Scores output 1-25 with a ship/polish/rework/start-over verdict. Domain accuracy is weighted heavily because it's where generic AI fails hardest on logistics specs. |
 | `style-matching` | Reads your existing PRDs from `reference-docs/` and replicates your structure, tone, heading hierarchy, table usage, and level of detail. Outputs sound like you wrote them, not like a template. |
@@ -29,7 +31,7 @@ Generic PM copilots produce reasonable output for standard SaaS features. They f
 | `/logistics-pm:user-stories` | Takes a PRD or feature description and decomposes it into Linear-ready user stories with goal, scope and logic, PRD references, and testable acceptance criteria. Ordered by dependency. |
 
 **Reference docs** included:
-- Two real freight forwarding PRDs (client credit limit with QuickBooks integration, Xeneta rate benchmarking for RFQ quoting) as style examples
+- Two sample freight forwarding PRDs (client credit limit with accounting-system integration, market rate benchmarking for RFQ quoting) as style examples
 - User story template for ticket creation
 
 ## Quick Start
@@ -66,7 +68,7 @@ logistics-pm/
 │   └── user-stories.md
 └── reference-docs/
     ├── credit-limit-prd.md
-    ├── xeneta-prd.md
+    ├── rate-benchmarking-prd.md
     └── sample-user-story.md
 ```
 

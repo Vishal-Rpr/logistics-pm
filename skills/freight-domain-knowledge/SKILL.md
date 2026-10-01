@@ -1,6 +1,6 @@
 ---
 name: freight-domain-knowledge
-description: "This skill provides freight forwarding and logistics domain expertise for product management work. It should be used when the user mentions shipping, freight, logistics, forwarding, customs, RFQ, BOL, rate quoting, container types, Incoterms, carrier management, consolidation, demurrage, credit limits, QuickBooks, landed cost, or any B2B supply chain workflow. It covers the full logistics lifecycle from procurement to last-mile delivery, freight forwarding execution workflows, documentation and compliance requirements, financial reconciliation, and the digital transformation happening across the industry."
+description: "This skill provides freight forwarding and logistics domain expertise for product management work. It should be used when the user mentions shipping, freight, logistics, forwarding, customs, RFQ, BOL, rate quoting, container types, Incoterms, carrier management, consolidation, demurrage, credit limits, accounting integrations, landed cost, or any B2B supply chain workflow. It covers the full logistics lifecycle from procurement to last-mile delivery, freight forwarding execution workflows, documentation and compliance requirements, financial reconciliation, and the digital transformation happening across the industry."
 ---
 
 # Freight Domain Knowledge for Product Managers
@@ -53,7 +53,7 @@ The forwarder's margin is the spread between the **buy rate** (what they pay the
 - **Spot rate** -- One-time rate for a single shipment. Higher price, no commitment.
 - **Contract rate** -- Negotiated for a defined period and volume commitment. Lower price, guaranteed capacity.
 
-**Market intelligence:** Tools like Xeneta and FreightOS provide independent benchmarking data (market low, average, high) across 170K+ port pairs. A forwarder can validate whether their proposed rate is competitive before sending it to the client. This benchmark step must add no more than 2-3 seconds to the quoting workflow.
+**Market intelligence:** Rate intelligence platforms provide independent benchmarking data (market low, average, high) across a broad set of global port pairs. A forwarder can validate whether their proposed rate is competitive before sending it to the client. This benchmark step must add no more than 2-3 seconds to the quoting workflow.
 
 Once the client accepts the quote, the forwarder secures a booking with the ocean, air, or rail carrier.
 
@@ -95,7 +95,7 @@ A single missing document or incorrect HS (Harmonized System) classification cod
 Goods are handed over to the primary carrier, who issues a **Master Bill of Lading (MBL)**. The forwarder issues a **House Bill of Lading (HBL)** to the shipper.
 
 **The BOL hierarchy matters:**
-- **MBL** -- Contract between the ocean carrier (e.g., Maersk, MSC, CMA CGM) and the freight forwarder. The carrier only recognizes the forwarder.
+- **MBL** -- Contract between the ocean carrier (major shipping lines) and the freight forwarder. The carrier only recognizes the forwarder.
 - **HBL** -- Contract between the freight forwarder and the shipper (their client). The carrier does not see the HBL.
 - This two-layer structure is what allows forwarders to consolidate cargo from multiple shippers under one MBL.
 
@@ -108,7 +108,7 @@ Goods are handed over to the primary carrier, who issues a **Master Bill of Ladi
 6. Out for delivery
 7. Delivered / POD (Proof of Delivery)
 
-Tracking data comes from carrier APIs, AIS (Automatic Identification System) vessel data, or platforms like Project44 and FourKites. Modern systems trigger exception-based alerts when a shipment deviates from its expected timeline.
+Tracking data comes from carrier APIs, AIS (Automatic Identification System) vessel data, or third-party carrier tracking platforms. Modern systems trigger exception-based alerts when a shipment deviates from its expected timeline.
 
 ### Stage 5: Import Customs and Final Delivery (Last Mile)
 
@@ -160,8 +160,8 @@ Available credit = Assigned credit limit - Customer credit exposure
 ```
 
 
-**Accounting system sync:** Most forwarders sync invoicing and payment data with QuickBooks, Xero, or SAP. Key architectural decisions:
-- Direction: QuickBooks is typically the source of truth for payments; the forwarding app is the source of truth for shipment-linked charges
+**Accounting system sync:** Most forwarders sync invoicing and payment data with an accounting or ERP system. Key architectural decisions:
+- Direction: The accounting system is typically the source of truth for payments; the forwarding app is the source of truth for shipment-linked charges
 - Frequency: Scheduled polling (15-30 min) vs. webhooks. Polling is simpler; webhooks are faster but harder to debug
 - Failure handling: Failed syncs must be logged, retried, and surfaced in a reconciliation dashboard
 - Partial payments: Invoices can be partially paid; the system must track partial application
@@ -174,11 +174,11 @@ Available credit = Assigned credit limit - Customer credit exposure
 Historically, these workflows relied on fragmented emails, spreadsheets, phone calls, and paper documents passed between parties. A single shipment might generate 50+ emails across 5+ parties.
 
 ### Where it is moving
-Integrated software platforms (CargoWise, Magaya, and custom-built TMS applications) are replacing manual coordination with:
+Integrated software platforms (established TMS vendors and custom-built TMS applications) are replacing manual coordination with:
 - **AI-powered OCR** to read shipping documents automatically and extract structured data
 - **Exception-based alerting** -- instead of tracking every shipment, the system surfaces only shipments with problems (customs hold, missed vessel, document discrepancy)
 - **Milestone-triggered automation** -- auto-generate invoices on delivery, auto-send arrival notices, auto-update credit positions
-- **Rate intelligence platforms** (Xeneta, Freightos Baltic Index) providing market benchmarking data via API
+- **Rate intelligence platforms** providing market benchmarking data via API
 - **MCP/API integrations** connecting forwarding apps to carrier systems, accounting platforms, and customs filing systems
 
 ### The gaps that remain
@@ -194,14 +194,14 @@ Integrated software platforms (CargoWise, Magaya, and custom-built TMS applicati
 
 | System | Purpose | Examples | Data flow |
 |--------|---------|----------|-----------|
-| TMS | Core operational platform | CargoWise, Magaya, custom builds | Bidirectional hub |
-| Ocean carriers | Booking, tracking, BOL | Maersk, MSC, CMA CGM, Hapag-Lloyd | API: booking requests out, tracking events in |
-| NVOCCs | Buy rates, consolidation | Shipco, Allseas, Vanguard | Rates in, booking requests out |
-| Rate intelligence | Market benchmarking | Xeneta, Freightos Baltic Index | API: rate queries out, market data in |
-| Accounting | Invoicing, payments, credit | QuickBooks, Xero, SAP | Sync: invoices out, payments in |
-| Carrier tracking | Real-time visibility | Project44, FourKites, INTTRA | Events in, status queries out |
-| Customs / compliance | Filing, classification | US CBP ABI, single-window systems | Filings out, clearance status in |
-| CRM | Client management | Salesforce, HubSpot | Client data bidirectional |
+| TMS | Core operational platform | Established TMS platforms or custom builds | Bidirectional hub |
+| Ocean carriers | Booking, tracking, BOL | Major global shipping lines | API: booking requests out, tracking events in |
+| NVOCCs | Buy rates, consolidation | NVOCC consolidators | Rates in, booking requests out |
+| Rate intelligence | Market benchmarking | Rate intelligence platforms | API: rate queries out, market data in |
+| Accounting | Invoicing, payments, credit | Accounting or ERP platforms | Sync: invoices out, payments in |
+| Carrier tracking | Real-time visibility | Carrier tracking / visibility platforms | Events in, status queries out |
+| Customs / compliance | Filing, classification | Government customs systems (e.g., US CBP ABI) | Filings out, clearance status in |
+| CRM | Client management | Enterprise CRM platforms | Client data bidirectional |
 | Document management | BOLs, commercial docs | Internal systems, DocuSign | Documents in, approvals out |
 
 ---
@@ -227,7 +227,7 @@ Incoterms define where cost and risk transfer from seller to buyer. They directl
 
 When writing specs or PRDs for logistics features, always address:
 
-1. **Data sync direction and source of truth** -- Which system owns which data? The forwarding app owns shipment data; QuickBooks owns payment data. Conflicts between them need a reconciliation workflow, not a silent overwrite.
+1. **Data sync direction and source of truth** -- Which system owns which data? The forwarding app owns shipment data; the accounting system owns payment data. Conflicts between them need a reconciliation workflow, not a silent overwrite.
 
 2. **Speed constraints** -- Quoting is time-sensitive. Any feature in the quoting path must add minimal latency (<3 seconds). Carrier booking APIs can be slow; design for async confirmation where possible.
 
@@ -241,7 +241,7 @@ When writing specs or PRDs for logistics features, always address:
 
 7. **Audit trails** -- Regulated industry. Every change to a BOL, invoice, credit limit, or customs filing needs a who/when/why log. Audit is not a phase-2 feature; it ships with v1.
 
-8. **Fallback behavior** -- When an API (carrier, rate provider, QuickBooks) is down, what does the user experience? Define graceful degradation: cached rates, manual override, queued sync retry.
+8. **Fallback behavior** -- When an API (carrier, rate provider, accounting system) is down, what does the user experience? Define graceful degradation: cached rates, manual override, queued sync retry.
 
 9. **Document-driven workflows** -- Many logistics processes are blocked until a specific document is received, signed, or filed. Features should model document state (draft, submitted, accepted, rejected) as a first-class entity.
 

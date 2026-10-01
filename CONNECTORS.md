@@ -18,8 +18,8 @@ Add these to `.mcp.json` based on your stack:
 | Chat | Slack | Pull stakeholder context, share updates |
 | Design | Figma | Reference designs when writing specs |
 | Analytics | Amplitude, Mixpanel | Pull product usage data for metrics review |
-| Accounting | QuickBooks (custom MCP) | Read financial data for credit management features |
-| Rate intelligence | Xeneta (custom MCP) | Query market rates for RFQ analysis |
+| Accounting | Accounting-system MCP (custom) | Read financial data for credit management features |
+| Rate intelligence | Rate-intelligence MCP (custom) | Query market rates for RFQ analysis |
 
 ## How to Add a Connector
 
@@ -42,4 +42,4 @@ Edit `.mcp.json` and add the server configuration. Example for adding Notion:
 
 ## Custom MCP Servers
 
-For systems without official MCP servers (QuickBooks, Xeneta, carrier APIs), you can build lightweight custom MCP servers. See the Xeneta PRD in `reference-docs/` for an example of how to evaluate and scope an MCP wrapper for a rate intelligence API.
+For systems without official MCP servers (accounting systems, rate intelligence platforms, carrier APIs), you can build lightweight custom MCP servers. See the rate benchmarking PRD in `reference-docs/` for an example of how to evaluate and scope an MCP wrapper for a rate intelligence API.

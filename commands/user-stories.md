@@ -79,7 +79,7 @@ Stories: [count] | Estimated sprint coverage: [X-Y sprints]
 
 ```
 User: /logistics-pm:user-stories [pastes credit limit PRD]
-Claude: [Decomposes into 8 stories: data model for invoice tracking, QuickBooks sync service, credit limit assignment UI, near-limit alerting, over-limit blocking logic, reconciliation dashboard, audit trail, admin configuration]
+Claude: [Decomposes into 8 stories: data model for invoice tracking, accounting-system sync service, credit limit assignment UI, near-limit alerting, over-limit blocking logic, reconciliation dashboard, audit trail, admin configuration]
 Claude: [Each story has goal, scope with integration details, acceptance criteria]
 Claude: [Appends eval scorecard focused on actionability]
 ```

@@ -15,7 +15,7 @@ Generate PRDs for logistics/supply chain features that go beyond generic product
 2. If reference documents exist in `reference-docs/`, read them to match the user's writing style and level of detail. See the `style-matching` skill for guidance.
 3. Ask the user for the feature topic if not already provided. Before generating, clarify:
    - What workflow does this affect? (quoting, booking, tracking, invoicing, credit management)
-   - What systems does it integrate with? (QuickBooks, carrier APIs, rate providers, TMS)
+   - What systems does it integrate with? (accounting system, carrier APIs, rate providers, TMS)
    - Who are the primary users? (ops team, finance, sales, clients)
    - Are there speed or latency constraints?
 4. Generate the PRD following the template structure. For each section:

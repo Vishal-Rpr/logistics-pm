@@ -33,7 +33,7 @@ For user stories:
 **What to check:**
 - Freight terminology used correctly (BOL vs. AWB, FCL vs. LCL, buy rate vs. sell rate)
 - Workflows match real freight forwarding operations (quoting -> booking -> tracking -> invoicing)
-- Integration points are realistic (QuickBooks for accounting, carrier APIs for tracking, rate providers for benchmarking)
+- Integration points are realistic (accounting systems for financials, carrier APIs for tracking, rate providers for benchmarking)
 - Regulatory/compliance mentions are accurate (customs, Incoterms, ISF)
 - Stakeholder roles are correct (ops team processes bookings, finance handles credit, sales handles RFQs)
 - Financial formulas make sense (credit exposure calculation, available credit derivation)

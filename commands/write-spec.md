@@ -11,7 +11,7 @@ Generate a PRD for a logistics or freight forwarding feature.
 
 `$ARGUMENTS` — The feature or problem to spec out. Examples:
 - "automated rate comparison across three NVOCCs"
-- "client credit limit enforcement with QuickBooks sync"
+- "client credit limit enforcement with accounting-system sync"
 - "real-time container tracking dashboard"
 
 ## Process
