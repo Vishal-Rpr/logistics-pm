@@ -12,7 +12,7 @@ Generate PRDs for logistics/supply chain features that go beyond generic product
 ## Instructions
 
 1. Read `references/prd-template.md` for the required document structure.
-2. Read the two style PRDs named in the `style-matching` skill, and apply that skill. Do not take PRD style from `sample-user-story.md`.
+2. Read the `style-matching` skill and use the two style PRDs included in that skill. Do not take PRD style from `sample-user-story.md`.
 3. Ask the user for the feature topic if not already provided. Before generating, clarify:
    - What workflow does this affect? (quoting, booking, tracking, invoicing, credit management)
    - What systems does it integrate with? (accounting system, carrier APIs, rate providers, TMS)

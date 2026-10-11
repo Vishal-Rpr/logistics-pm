@@ -29,11 +29,11 @@ Edit `.mcp.json` and add the server configuration. Example for adding Notion:
 {
   "mcpServers": {
     "linear": {
-      "type": "url",
+      "type": "sse",
       "url": "https://mcp.linear.app/sse"
     },
     "notion": {
-      "type": "url",
+      "type": "sse",
       "url": "https://mcp.notion.so/sse"
     }
   }
