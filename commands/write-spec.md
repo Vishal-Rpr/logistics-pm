@@ -18,7 +18,7 @@ Generate a PRD for a logistics or freight forwarding feature.
 
 1. Read the `freight-domain-knowledge` skill for domain context.
 2. Read the `logistics-prd-generation` skill and its `references/prd-template.md` for the PRD structure.
-3. Check `reference-docs/` for style reference documents. If they exist, read the `style-matching` skill and apply it.
+3. Read the `style-matching` skill and apply it to the two style PRDs it names.
 
 4. Before generating, ask the user to clarify (if not already clear from the arguments):
    - Which workflow does this affect? (quoting, booking, tracking, invoicing, credit management)

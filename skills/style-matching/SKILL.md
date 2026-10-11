@@ -11,8 +11,11 @@ Generate documents that sound like the user wrote them, not like a generic AI te
 
 ## Instructions
 
-1. Check `reference-docs/` for available reference documents. If none exist, skip style matching and note it in the output.
-2. Read the available reference documents. Extract the following style signals:
+1. Read only these two style PRDs. They are the same files the RAG co-pilot uses. Do not use `sample-user-story.md` as PRD style.
+   - `reference-docs/credit-limit-prd.md`
+   - `reference-docs/rate-benchmarking-prd.md`
+   If either file is missing, skip style matching and note it in the output.
+2. Read those two documents. Extract the following style signals:
 
 ### Structure Signals
 - What sections do they use? In what order?
@@ -57,7 +60,7 @@ The generated PRD should replicate all of these patterns, not default to a gener
 
 ## Fallback
 
-If no reference documents are available in `reference-docs/`:
+If either style PRD named above is missing:
 - Use the template from `skills/logistics-prd-generation/references/prd-template.md`
 - Note in the output: "No reference style documents found. Using standard template. Add your existing PRDs to reference-docs/ for personalized style matching."
 

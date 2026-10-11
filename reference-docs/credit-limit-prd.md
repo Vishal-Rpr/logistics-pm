@@ -1,13 +1,15 @@
 # PRD: Client credit limit and accounting system integration
 
+> _Sample reference document for writing-style matching only. Fictional B2B freight context; contains no company-specific data._
+
 ## Overview
-Improve the integration between a freight forwarding application and its accounting system to enable holistic client credit management. This system will unify invoicing, payment tracking, credit/debit note handling, and credit limit evaluation into a single source of truth for customer financial health.
+Improve the integration between a B2B freight forwarding platform and its accounting system to enable holistic client credit management. This system will unify invoicing, payment tracking, credit/debit note handling, and credit limit evaluation into a single source of truth for customer financial health.
 
 ## Goals
 - Provide real-time visibility into each customer's credit position
-- Automate the sync of invoicing and payment data between the forwarding app and the accounting system
+- Automate the sync of invoicing and payment data between the platform and the accounting system
 - Enable credit limit assignment, enforcement, and revision workflows
-- Reduce manual reconciliation effort between the two systems
+- Reduce manual reconciliation effort between the platform and the accounting system
 
 ## Non-goals
 - Replacing the accounting system as the system of record for accounting
@@ -51,9 +53,9 @@ Tracks credits, debits, and payments at the customer level that have NOT yet bee
 | Customer-level debit notes | Debit memos issued to the customer not tied to a specific invoice | Accounting system |
 
 ### Key considerations
-- Credit memos can exist at the customer level without being associated to any invoice. These sit as open credits on the customer's account and can be applied to future invoices or refunded.
-- Unadjusted advances should be flagged for reconciliation -- they represent customer funds the forwarder holds
-- The system should surface aging of unadjusted items (e.g., "Customer X has a $5,000 unapplied credit note from 45 days ago")
+- In the accounting system, credit memos can exist at the customer level without being associated to any invoice. These sit as open credits on the customer's account and can be applied to future invoices or refunded.
+- Unadjusted advances should be flagged for reconciliation -- they represent customer funds held on account
+- The system should surface aging of unadjusted items (e.g., "Sample Client has a $5,000 unapplied credit note from 45 days ago")
 
 ---
 
@@ -107,7 +109,7 @@ Available credit = Assigned credit limit - Customer credit exposure
 | Status | Condition |
 |--------|-----------|
 | Within limit | Available credit > 0 |
-| Near limit | Available credit < 10% of assigned limit |
+| Near limit | Available credit < configurable threshold (e.g., 10% of assigned limit) |
 | Over limit | Available credit < 0 |
 | Expired | Credit limit past expiry date |
 
@@ -119,7 +121,7 @@ Available credit = Assigned credit limit - Customer credit exposure
 
 ---
 
-## Sync architecture
+## Sync architecture (accounting system integration)
 
 ### Direction of data flow
 - **Accounting system -> App**: Invoice data, payment records, credit/debit memos, customer balances
@@ -136,10 +138,10 @@ Available credit = Assigned credit limit - Customer credit exposure
 
 ## Open questions
 - What approval workflow is needed for credit limit assignment and revision? (Single approver vs. multi-level?)
-- Should we block shipment bookings when over limit, or just warn? Is this configurable per customer?
-- What is the desired sync frequency?
-- Are there existing credit policies or documentation templates we should incorporate?
-- How should we handle customers with multiple sub-entities in the accounting system?
+- Should shipment bookings be blocked when over limit, or just warned? Is this configurable per customer?
+- What is the desired sync frequency with the accounting system?
+- Are there existing credit policies or documentation templates to incorporate?
+- How should customers with multiple sub-entities in the accounting system be handled?
 
 ---
 
@@ -147,4 +149,4 @@ Available credit = Assigned credit limit - Customer credit exposure
 - Reduction in time spent on manual credit checks before booking
 - Reduction in overdue receivables from customers exceeding their credit limit
 - Percentage of customers with active, non-expired credit limits
-- Sync reliability (% successful syncs)
+- Sync reliability (% successful syncs with accounting system)
