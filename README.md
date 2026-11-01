@@ -82,6 +82,18 @@ logistics-pm/
 | Output evaluation | No | 5-dimension rubric with scoring, verdict, and improvement suggestions |
 | Ticket decomposition | No | PRD-to-user-stories with dependency ordering and acceptance criteria |
 
+## Evaluation
+
+Blind eval of the same 10 freight features. I scored them, and so did a separate model. Neither knew which system wrote the PRD.
+
+| System | My score | Judge |
+| --- | --- | --- |
+| Plain Claude | 16.0 | 23.4 |
+| RAG co-pilot | 15.6 | 18.5 |
+| This plugin | 21.0 | 24.3 |
+
+The 5.0 point gap over plain Claude is mostly style and domain accuracy. Cost, latency, and where the judge disagreed are in [docs/eval.md](docs/eval.md).
+
 ## Built With
 
 - Real knowledge from a freight forwarding B2B company and its application
